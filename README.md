@@ -1,1 +1,0 @@
-# minga_front_ruggia
