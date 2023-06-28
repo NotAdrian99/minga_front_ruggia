@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 function App() {
   const [count, setCount] = useState(0);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [activeCategory, setActiveCategory] = useState([]);
-  const [categories, setCategories] = useState([]);
-
   useEffect(() => {
     fetch("http://localhost:3001/api/category")
       .then((response) => response.json())
       .then((data) => {
-        setCategories(data.response);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -48,25 +45,28 @@ function App() {
           </div>
         )}
         {/* /////carousel */}
-        <div className="relative flex flex-col justify-end pt-2 w-11/12 items-start sm:hidden md:w-full">
-          <div className="w-full h-64 bg-[linear-gradient(153deg,_#f9a8d4_-33%,#f472b6_76%)] bg-cover bg-blend-normal absolute top-10 left-0 flex flex-row justify-start gap-40 items-center pt-20 px-8 rounded">
-            <button className=" bg-cover bg-blend-normal relative flex flex-col justify-start  mr-[500px] w-6 shrink-0 items-center rounded-[50000px]">
-              <div className="shadow-[0px_1px_4px_0px_rgba(0,_0,_0,_0.1)] bg-[linear-gradient(113deg,_rgba(255,_255,_255,_0.5)_8%,rgba(255,_255,_255,_0)_270%)] bg-cover  bg-blend-normal relative flex flex-col justify-start w-6 h-6 shrink-0 items-center py-2 bottom-10 rounded-[50000px]">
+        <div className="relative flex flex-col justify-end pt-2 w-11/12 items-start sm:hidden md:w-full ">
+          <div className="w-full h-64 bg-[linear-gradient(153deg,_#f9a8d4_-33%,#f472b6_76%)] bg-cover bg-blend-normal absolute top-10 left-0 flex flex-row justify-start gap-40 items-center pt-20 px-8 rounded  ">
+            <button className=" bg-cover  bg-blend-normal relative flex flex-col justify-start  mr-[500px] w-6 shrink-0 items-center rounded-[50000px]">
+              <div className="shadow-[0px_1px_4px_0px_rgba(0,_0,_0,_0.1)] bg-[linear-gradient(113deg,_rgba(255,_255,_255,_0.5)_8%,rgba(255,_255,_255,_0)_270%)] bg-cover  bg-blend-normal relative flex flex-col justify-start w-6 h-6 shrink-0 items-center py-2 bottom-10 rounded-[50000px] ">
                 <img src="https://file.rendit.io/n/TllKkXLBAVQl4gXSjocn.svg" className="min-h-0 min-w-0 relative w-2" />
               </div>
             </button>
             <div className="self-start flex flex-col justify-start  gap-2 relative w-2/3 items-center lg:">
-              <div className="text-2xl font-['Montserrat'] font-medium leading-[22.8px] text-white relative w-full md:mr-[1000px] lg:w-[250px] lg:mr-[800px] ">{activeCategory.name}</div>
-              <div className="text-sm font-sans leading-[13.3px] text-white relative w-full md:mr-[1000px] lg:w-[250px] lg:mr-[800px] 2xl:w-[400px] ">{activeCategory.description}</div>
+              <div className="text-2xl font-['Montserrat'] font-medium leading-[22.8px] text-white relative w-full md:mr-[1000px] lg:w-[250px] lg:mr-[800px] ">Shonen</div>
+              <div className="text-sm font-sans leading-[13.3px] text-white relative w-full md:mr-[1000px] lg:w-[250px] lg:mr-[800px] 2xl:w-[400px] ">
+                Is the manga that is aimed at adolescent boys. They are series with large amounts of action, in which humorous situations often occur. The camaraderie between members of a collective
+                or a combat team stands out.
+              </div>
             </div>
-            <button className=" bg-cover bg-blend-normal relative flex flex-col justify-start w-6 shrink-0 items-center rounded-[50000px]">
-              <div className="shadow-[0px_1px_4px_0px_rgba(0,_0,_0,_0.1)] bg-[linear-gradient(113deg,_rgba(255,_255,_255,_0.5)_8%,rgba(255,_255,_255,_0)_270%)] bg-cover  bg-blend-normal relative flex flex-col justify-start w-6 h-6 shrink-0 items-center py-2 bottom-10 rounded-[50000px]">
+            <button className=" bg-cover  bg-blend-normal relative flex flex-col justify-start w-6 shrink-0 items-center rounded-[50000px]">
+              <div className="shadow-[0px_1px_4px_0px_rgba(0,_0,_0,_0.1)] bg-[linear-gradient(113deg,_rgba(255,_255,_255,_0.5)_8%,rgba(255,_255,_255,_0)_270%)] bg-cover  bg-blend-normal relative flex flex-col justify-start w-6 h-6 shrink-0 items-center py-2 bottom-10 rounded-[50000px] ">
                 <img src="https://file.rendit.io/n/EEg9UeYSY5vhqKOfUOps.svg" className="min-h-0 min-w-0 relative w-2" />
               </div>
             </button>
           </div>
-          <img src={activeCategory.cover_photo} className="w-[180px] h-[284px] min-h-0 min-w-0 absolute top-0 left-[378px]  lg:left-[230px] md:left-[90px]" />
-          <img src={activeCategory.character_photo} className="left-[70px] bottom-[18px] relative md:invisible" />
+          <img src="https://file.rendit.io/n/ooYbaEAaNZGADKPij5ir.png" className="w-[180px] h-[284px] min-h-0 min-w-0 absolute top-0 left-[378px]  lg:left-[230px] md:left-[90px]" />
+          <img src="trigun.png" className="left-[70px] bottom-[18px] relative md:invisible" />
         </div>
         {/* ///background */}
         <div className="bg-[url(https://file.rendit.io/n/EIEWXH81Z1DuGfuq3FGt.png)] bg-cover bg-center bg-blend-normal flex flex-col justify-end gap-4 relative w-11/12 h-[551px] shrink-0 items-start pl-[108px] py-32 md:w-screen  sm:h-screen sm:pl-[10px]  ">
